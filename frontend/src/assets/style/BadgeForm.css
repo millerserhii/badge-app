@@ -1,0 +1,206 @@
+.container {
+    margin-top: 20%;
+    margin-bottom: 30%;
+}
+
+.maincard {
+    position: relative;
+    background-color: transparent;
+    border-radius: 15px;
+    width: 40%;
+    text-align: center;
+    left: 30%;
+    perspective: 1000px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.maincard.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.front {
+    position: absolute;
+    top: 20%;
+    left: 0%;
+    width: 100%;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    top: 20%;
+    left: 0%;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    background-color: rgba(245, 18, 18, 0.592);
+    backdrop-filter: blur(30px);
+    transform: rotateY(180deg);
+}
+
+
+
+.cardHeader {
+    margin-top: 15px;
+    font-size: 25px;
+    color: #fff;
+}
+
+.cardContent {
+    margin-top: 0px;
+    font-size: 25px;
+    color: #fff;
+    text-align: right;
+}
+
+.badgeInfo {
+    margin-top: 122px;
+    width: 100%;
+    min-height: 100px;
+    text-align: left;
+    text-indent: 10px;
+    font-size: 35px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.365);
+    backdrop-filter: blur(15px);
+    border-radius: 10px 160px 10px 10px;
+}
+
+.iconBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 0.8em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.inputForm {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.input-text {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+    width: 90%;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+}
+
+.glow-on-hover {
+    position: relative;
+    font-size: 19px;
+    margin-bottom: 25px;
+    width: 35%;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: "";
+    background: linear-gradient(45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(105, 165, 95);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.thick {
+    font-weight: bolder;
+}
+
+.thin {
+    font-weight: lighter;
+}
+
+img.logo {
+    color: #fff;
+    position: absolute;
+    left: -10px;
+    top: -50px;
+    width: 250px;
+    height: 250px;
+
+  }
