@@ -26,14 +26,12 @@
         </form>
       </div>
 
-      <div class="back shadow">
+      <div class="back shadow" :style="{backgroundColor: Badge.color}">
         <img class="logo" src="../assets/img/logo.svg" />
         <div class="cardContent">
           <button class="iconBtn" @click="flipToFront" type="submit">
             <font-awesome-icon fal icon="arrow-rotate-left" />
           </button>
-          <!-- <div class="logo"></div> -->
-
           <div class="badgeInfo">
             <p class="thick">{{ this.Badge.name }}</p>
             <p class="thin">{{ this.Badge.company }}</p>
@@ -47,6 +45,7 @@
 <script>
 import "../assets/style/BadgeForm.css";
 import { toast } from "bulma-toast";
+import axios from "axios";
 
 export default {
   data() {
@@ -55,12 +54,29 @@ export default {
       Badge: {
         name: "",
         company: "",
+        color: '',
       },
     };
   },
   methods: {
-    addBadge() {
-      console.log(this.Badge);
+    async getBadgeColor() {
+
+      let url =
+        "http://localhost:8080/local/data?name=" +
+        this.Badge.name +
+        "&company=" +
+        this.Badge.company;
+      console.log(url);
+
+      let reqOptions = {
+        url: url,
+        method: "GET",
+        mode: "no-cors",
+        headers: {},
+      };
+      let data = await axios.request(reqOptions);
+      this.Badge.color = data.data;
+      console.log(this.Badge.color);
     },
 
     flipToBack() {
@@ -75,6 +91,7 @@ export default {
       await sleep(300);
       this.Badge.name = "";
       this.Badge.company = "";
+      this.Badge.color = "";
     },
 
     checkForm(e) {
@@ -99,7 +116,7 @@ export default {
       }
       if (!this.errors.length) {
         this.errors = [];
-        this.addBadge();
+        this.getBadgeColor();
         this.flipToBack();
       }
 

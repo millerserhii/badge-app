@@ -1,11 +1,12 @@
 <template>
   <div class="app">
-    <Badge-form @add="addBadge" />
+    <Badge-form/>
   </div>
 </template>
 
 <script>
 import BadgeForm from "@/components/BadgeForm";
+
 
 export default {
   components: {
