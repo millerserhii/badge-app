@@ -26,7 +26,7 @@
         </form>
       </div>
 
-      <div class="back shadow" :style="{backgroundColor: Badge.color}">
+      <div class="back shadow" :style="{ backgroundColor: Badge.color }">
         <img class="logo" src="../assets/img/logo.svg" />
         <div class="cardContent">
           <button class="iconBtn" @click="flipToFront" type="submit">
@@ -54,27 +54,34 @@ export default {
       Badge: {
         name: "",
         company: "",
-        color: '',
+        color: "",
       },
     };
   },
   methods: {
     async getBadgeColor() {
-
       let url =
-        "http://localhost:8080/local/data?name=" +
+        "https://nf35205llj.execute-api.eu-central-1.amazonaws.com/local/data?name=" +
         this.Badge.name +
         "&company=" +
         this.Badge.company;
       console.log(url);
 
       let reqOptions = {
+        headers: {
+          "Access-Control-Allow-Headers":
+            "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+          "Access-Control-Allow-Methods": "GET, OPTIONS",
+          "content-type": "text/plain",
+        },
         url: url,
         method: "GET",
         mode: "no-cors",
         headers: {},
       };
+
       let data = await axios.request(reqOptions);
+
       this.Badge.color = data.data;
       console.log(this.Badge.color);
     },

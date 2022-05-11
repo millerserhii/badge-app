@@ -9,6 +9,7 @@ library.add(fab);
 import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(far);
 import { dom } from "@fortawesome/fontawesome-svg-core";
+
 dom.watch();
 
 const app = createApp(App);
